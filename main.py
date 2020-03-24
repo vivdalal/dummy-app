@@ -12,6 +12,10 @@ else:
     print('Script arguments : ' + sys.argv[0])
     print ('Argument List:', str(sys.argv[1:]))
 
+sender_email = str(sys.argv[1])
+password = str(sys.argv[2])
+receiver_email = str(sys.argv[3])
+
 # Python code to illustrate Sending mail from  
 # your Gmail account  
 import smtplib 
@@ -23,13 +27,13 @@ s = smtplib.SMTP('smtp.gmail.com', 587)
 s.starttls() 
   
 # Authentication 
-s.login(sys.argv[2], sys.argv[3]) 
+s.login(sender_email, password) 
   
 # message to be sent 
 message = "Hey there, Python script ran successfully inside the container"
   
 # sending the mail 
-s.sendmail(sys.argv[2], sys.argv[4], message) 
+s.sendmail(sender_email, receiver_email, message) 
   
 # terminating the session 
 s.quit() 
